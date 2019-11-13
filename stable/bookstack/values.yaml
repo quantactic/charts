@@ -12,6 +12,7 @@ image:
 app:
   # Laravel APP_KEY. Generate one with `php artisan key:generate` and put here if you want a static key.
   key:
+  url:
 
 ##
 ## External database configuration

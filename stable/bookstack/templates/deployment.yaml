@@ -85,6 +85,10 @@ spec:
                   name: {{ printf "%s-%s" .Release.Name "app" }}
                   key: app-key
           {{- end }}
+          {{- if .Values.app.url }}
+            - name: APP_URL
+              value: {{ .Values.key.url | quote }}
+          {{- end }}
           volumeMounts:
           - name: uploads
             mountPath: /var/www/bookstack/public/uploads
