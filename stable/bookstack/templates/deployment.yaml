@@ -53,19 +53,7 @@ spec:
             - name: LDAP_VERSION
               value: {{ .Values.ldap.version | quote }}
           {{- end }}
-          {{- if .Values.mariadb.enabled }}
-            - name: DB_HOST
-              value: {{ template "bookstack.mariadb.fullname" . }}
-            - name: DB_DATABASE
-              value: {{ .Values.mariadb.db.name | quote }}
-            - name: DB_USERNAME
-              value: {{ .Values.mariadb.db.user | quote }}
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ template "bookstack.mariadb.fullname" . }}
-                  key: mariadb-password
-          {{- else }}
+          {{- if .Values.externalDatabase.host }}
             - name: DB_HOST
               value: {{ .Values.externalDatabase.host | quote }}
             - name: DB_DATABASE
